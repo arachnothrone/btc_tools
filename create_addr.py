@@ -26,8 +26,10 @@ import codecs
 import ecdsa
 
 def public_compressed(pk):
+	# returns compressed key
 	x = pk[0:64]
 	y = int.from_bytes(codecs.decode(pk[64:128], 'hex'), byteorder='big', signed='false')
+ 	# prefix corresponds to the parity (even/odd) of Y coordinate
 	prefix = b'02' if y % 2 == 0 else b'03'
 	return prefix + x
 
@@ -63,4 +65,3 @@ address_main = pubKeyHash_mainnet + checkSum(pubKeyHash_mainnet)
 address_test = pubKeyHash_testnet + checkSum(pubKeyHash_testnet)
 print("Addres mainnet:   {}    B58: {}".format(address_main, encode58(address_main)))
 print("Addres testnet:   {}    B58: {}".format(address_test, encode58(address_test)))
-
