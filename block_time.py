@@ -1,6 +1,6 @@
-```
+'''
 Based on https://github.com/jgarzik/python-bitcoinrpc
-```
+'''
 
 from bitcoinrpc.authproxy import AuthServiceProxy, JSONRPCException
 from datetime import datetime
